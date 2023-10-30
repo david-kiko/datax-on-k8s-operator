@@ -1,0 +1,32 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: manager-role
+rules:
+- apiGroups:
+  - dataxoperator.tech.io
+  resources:
+  - dataxapplications
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - dataxoperator.tech.io
+  resources:
+  - dataxapplications/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - dataxoperator.tech.io
+  resources:
+  - dataxapplications/status
+  verbs:
+  - get
+  - patch
+  - update

@@ -1,0 +1,31 @@
+apiVersion: dataxoperator.tech.io/v1beta1
+kind: DataxApplication
+metadata:
+  labels:
+    app.kubernetes.io/name: dataxapplication
+    app.kubernetes.io/instance: dataxapplication-sample
+    app.kubernetes.io/part-of: datax-on-k8s-operator
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: datax-on-k8s-operator
+  name: dataxapplication-sample
+  namespace: datax-on-k8s-operator-system
+spec:
+  # TODO(user): Add fields here
+  mode: cluster
+  image: nginx
+  imagePullPolicy: IfNotPresent
+  driver:
+    coreRequest: "512m"
+    coreLimit: "1024m"
+    memoryRequest: "512m"
+    memoryLimit: "1024m"
+    driverPort: 10000
+  executor:
+    coreRequest: "512m"
+    coreLimit: "1024m"
+    memoryRequest: "512m"
+    memoryLimit: "1024m"
+  channel: 1
+  restartPolicy:
+    type: Never
+  batchScheduler: "volcano"

@@ -1,0 +1,31 @@
+# permissions for end users to edit dataxapplications.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: dataxapplication-editor-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: datax-on-k8s-operator
+    app.kubernetes.io/part-of: datax-on-k8s-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: dataxapplication-editor-role
+rules:
+- apiGroups:
+  - dataxoperator.tech.io
+  resources:
+  - dataxapplications
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - dataxoperator.tech.io
+  resources:
+  - dataxapplications/status
+  verbs:
+  - get
